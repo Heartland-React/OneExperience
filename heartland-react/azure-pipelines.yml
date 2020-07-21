@@ -1,0 +1,8 @@
+script: npm run publish:npm
+script: npm version patch
+
+task: Npm@1
+  inputs:
+    command: publish
+    publishRegistry: useFeed
+    publishFeed: heartland-react/heartland-react
