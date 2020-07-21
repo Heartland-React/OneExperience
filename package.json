@@ -1,18 +1,10 @@
 {
 	"name": "heartland-react",
-	"version": "0.2.0",
+	"version": "1.0.2",
 	"private": false,
 	"babel": {
 		"presets": [
 			"@babel/preset-react"
-		],
-		"plugins": [
-			[
-				"transform-postcss",
-				{
-					"config": "configuration/postcss.config.js"
-				}
-			]
 		]
 	},
 	"dependencies": {

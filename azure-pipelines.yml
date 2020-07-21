@@ -1,27 +1,18 @@
 name: $(Build.DefinitionName)_$(versionNumberPrefix).$(Build.BuildId)
 
 trigger:
-- master
+  - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: "ubuntu-latest"
 
-variables: 
+variables:
   versionNumberPrefix: 0.1.0
-  fullVersionNumber: '$(versionNumberPrefix).$(Build.BuildId)'
+  fullVersionNumber: "$(versionNumberPrefix).$(Build.BuildId)"
 
-stages:
-- stage: Build
-  jobs:
-  - job:
-    steps:
-    - script: npm run publish:npm
-
-    - script: npm version patch
-
-    - task: Npm@1
-      displayName: 'Publish to npm Feed'
-      inputs:
-        command: publish
-        publishRegistry: useFeed
-        publishFeed: heartland-react/heartland-react
+steps:
+  - task: Npm@1
+    inputs:
+      command: publish
+      publishRegistry: useFeed
+      publishFeed: Edge Billing and Payments/heartland-react
