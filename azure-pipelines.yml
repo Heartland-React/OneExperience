@@ -3,4 +3,4 @@ steps:
     inputs:
       command: publish
       publishRegistry: useFeed
-      publishFeed: heartland-react/heartland-react
+      publishFeed: Heartland.react/heartland-react
