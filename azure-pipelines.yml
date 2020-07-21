@@ -12,6 +12,6 @@ variables:
 
 - task: Npm@1
   inputs:
-  command: publish
-  publishRegistry: useFeed
-  publishFeed: heartland-react/heartland-react
+    command: publish
+    publishRegistry: useFeed
+    publishFeed: heartland-react/heartland-react
