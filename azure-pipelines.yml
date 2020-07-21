@@ -10,12 +10,8 @@ variables:
   versionNumberPrefix: 0.1.0
   fullVersionNumber: "$(versionNumberPrefix).$(Build.BuildId)"
 
-stages:
-  - stage: Build
-
-     - task: Npm@1
-        displayName: "Publish to npm Feed"
-        inputs:
-        command: publish
-        publishRegistry: useFeed
-        publishFeed: heartland-react/heartland-react
+- task: Npm@1
+  inputs:
+  command: publish
+  publishRegistry: useFeed
+  publishFeed: heartland-react/heartland-react
