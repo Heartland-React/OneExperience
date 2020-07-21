@@ -3,4 +3,4 @@ steps:
     inputs:
       command: publish
       publishRegistry: useFeed
-      publishFeed: Heartland.React/heartland-react
+      publishFeed: Edge Billing and Payments/heartland-react
