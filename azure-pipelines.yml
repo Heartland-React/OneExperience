@@ -1,5 +1,7 @@
+script: npm install
 script: npm run publish:npm
 script: npm version patch
+
 
 task: Npm@1
   inputs:
