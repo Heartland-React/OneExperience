@@ -15,19 +15,13 @@ stages:
     jobs:
       - job:
         steps:
-          - script: npm install -g vsts-npm-auth
-
-          - script: vsts-npm-auth -config .npmrc
-
-          - script: npm install
-
-          - script: npm run publish:npm
-
-          - script: npm version patch
-
-          - task: Npm@1
+         - task: Npm@1
             displayName: "Publish to npm Feed"
             inputs:
               command: publish
               publishRegistry: useFeed
               publishFeed: heartland-react/heartland-react
+
+         
+
+         
