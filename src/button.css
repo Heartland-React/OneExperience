@@ -1,0 +1,114 @@
+.btn {
+	min-width: 124px;
+	min-height: 39px;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 29px;
+	align-items: center;
+	text-align: center;
+	box-sizing: border-box;
+	cursor: pointer;
+	margin: 2px;
+	border: 2px solid var(--borderGray);
+	outline: none;
+}
+
+.btnIconOnly {
+	min-width: 39px;
+	min-height: 39px;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 29px;
+	align-items: center;
+	text-align: center;
+	box-sizing: border-box;
+	cursor: pointer;
+	margin: 2px;
+	border: 2px solid var(--borderGray);
+	outline: none;
+}
+
+.btn .iconRight {
+	padding-left: 15px;
+}
+
+.btn .iconLeft {
+	padding-right: 15px;
+}
+
+.iconLoading {
+	position: relative;
+	top: 4px;
+}
+
+.primaryBtn {
+	color: var(--text);
+	background-color: var(--blue);
+	border-color: var(--blue);
+}
+
+.primaryBtn:hover {
+	color: var(--text);
+	background-color: var(--navyBlue);
+	border-color: var(--navyBlue);
+}
+
+.primaryBtn .icon {
+	color: var(--text);
+}
+
+.secondaryBtn {
+	color: var(--blue);
+	background-color: var(--secondaryBackground);
+}
+
+.secondaryBtn:hover {
+	color: var(--blue);
+	background-color: var(--secondaryBackground);
+	border-color: var(--blue);
+}
+
+.secondaryBtn .icon {
+	color: var(--blue);
+}
+
+.dashedBtn {
+	color: var(--blue);
+	background-color: var(--secondaryBackground);
+	border-style: dashed;
+	border-color: var(--heartland-gray);
+}
+
+.dashedBtn:hover {
+	color: var(--blue);
+	background-color: var(--secondaryBackground);
+	border-style: dashed;
+	border-color: var(--blue);
+}
+
+.dashedBtn .icon {
+	color: var(--blue);
+}
+
+.cancelBtn {
+	color: var(--heartland-gray);
+	border: none;
+	background-color: transparent;
+	border-color: transparent;
+}
+
+.warningBtn {
+	color: var(--text);
+	border: none;
+	background-color: var(--red);
+	border: 2px solid var(--red);
+}
+
+.warningBtn:hover {
+	color: var(--text);
+	border: none;
+	background-color: var(--darkRed);
+	border: 2px solid var(--darkRed);
+}

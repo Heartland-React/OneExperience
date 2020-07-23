@@ -1,0 +1,141 @@
+body {
+	margin: 0;
+	font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+	/*base colors*/
+	--white: #fff;
+	--black: rgb(32, 32, 32);
+	--blue: #0f7dc4;
+	--buttonBlue: #0f7dc4;
+	--whiteBlue: #d1edff; /* specifically used for the info Icon gradient in the Modal */
+	--navyBlue: #003c71;
+	--red: #c8102e;
+	--darkRed: #ad0d27;
+	--maroon: #a83232;
+	--gray: #9f9f9f;
+	--limeGreen: #5aa832;
+	--deepGreen: #2c686a;
+	--yellowGold: #ffbf3f;
+	--slateGray: #8a92a5;
+	--iconGray: #9ba2b2;
+	--iconLightGray: #dde5ec;
+	--scrollbarColor: #3a3c4749;
+	--hoverGray: #a2a3a511; /*hover color for most of the app controls */
+	--hoverRow: #eeeeee; /*specifcally for grid hover */
+	--heartland-gray: #8b93a4; /*most title texts use this */
+	--activeGray: #9c9c9c;
+	--selectedBackground: #a3a3a3;
+	/*text*/
+	--text: white;
+	--textInverse: #333333;
+	--title1: rgb(39, 39, 39);
+	--subtitle: #999ba1;
+	--disabled: #a7a8aa;
+	/*borders*/
+	--borderLine: #d4d5d6;
+	--borderGray: #bcbfc8;
+	--borderBlue: #139ceb;
+	--borderCard: #dde5ec;
+	--borderHeader: #e2e2e2;
+	--borderInput: #cccccc;
+	--borderMenu: #cccccc;
+	/*inputs*/
+	--inputDisabled: #c3c3c30c;
+	--inputLabel: #797979ed;
+	--inputText: #333333;
+	--inputFocus: #5a5a5a49;
+	--inputHover: #b3b3b3;
+	--inputShadow: #bebebe33;
+	/*backgrounds*/
+	--appBackground: #f8f9fc;
+	--transparentBlack: #0000001a;
+	--menuBackground: #3a3c47;
+	--secondaryBackground: #fff;
+	/*non-color properties*/
+	--controlFontSize: 14px;
+	--controlMargin: 18px;
+	--controlHeight: 43px;
+	--opacityHover: 0.9;
+	--expandedMenuWidth: 250px;
+	--collapsedMenuWidth: 70px;
+	--menuExpandTransition: 0.3s;
+	--menuCollapseTransition: 0.3s;
+	--headerHeight: 85px;
+	--headerHeightMobile: 50px;
+	--borderRadius: 3px;
+	--appCardTransition: 0.5s;
+	--appCardFadeIn: 0.75s;
+	--appCardCollapsedHeight: 58px;
+}
+
+.fontAwesomeIcon {
+	margin-right: 19px;
+}
+
+.white {
+	color: var(--white);
+}
+
+.iconCircle {
+	left: 4px;
+	top: 5px;
+	position: relative;
+	background-color: var(--activeGray);
+	border-radius: 50%;
+	border: 5px solid var(--activeGray);
+}
+html,
+body,
+#root {
+	height: 100%;
+	width: 100%;
+	background-color: var(--appBackground);
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+input {
+	font-family: "Roboto";
+}
+
+input:focus {
+	outline: 1px solid var(--inputFocus);
+}
+
+.inputLabel {
+	display: block;
+	font-size: 12px;
+	font-weight: bold;
+	margin-bottom: 2px;
+	color: var(--inputLabel);
+	text-transform: uppercase;
+}
+
+.inputLabel:hover {
+	cursor: pointer;
+}
+
+.maxInput {
+	margin-top: var(--controlMargin);
+	width: 100%;
+}
+
+.mediumInput {
+	margin-top: var(--controlMargin);
+	width: 48%;
+}
+
+@media screen and (max-width: 992px) {
+	.mediumInput {
+		width: 100%;
+	}
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
+}
