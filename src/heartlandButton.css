@@ -1,4 +1,4 @@
-.btn {
+.h-btn {
 	min-width: 124px;
 	min-height: 39px;
 	font-style: normal;
@@ -14,7 +14,7 @@
 	outline: none;
 }
 
-.btnIconOnly {
+.h-btnIconOnly {
 	min-width: 39px;
 	min-height: 39px;
 	font-style: normal;
@@ -30,83 +30,75 @@
 	outline: none;
 }
 
-.btn .iconRight {
-	padding-left: 15px;
-}
-
-.btn .iconLeft {
-	padding-right: 15px;
-}
-
-.iconLoading {
+.h-iconLoading {
 	position: relative;
 	top: 4px;
 }
 
-.primaryBtn {
+.h-primaryBtn {
 	color: var(--text);
 	background-color: var(--blue);
 	border-color: var(--blue);
 }
 
-.primaryBtn:hover {
+.h-primaryBtn:hover {
 	color: var(--text);
 	background-color: var(--navyBlue);
 	border-color: var(--navyBlue);
 }
 
-.primaryBtn .icon {
+.h-primaryBtn .icon {
 	color: var(--text);
 }
 
-.secondaryBtn {
+.h-secondaryBtn {
 	color: var(--blue);
 	background-color: var(--secondaryBackground);
 }
 
-.secondaryBtn:hover {
+.h-secondaryBtn:hover {
 	color: var(--blue);
 	background-color: var(--secondaryBackground);
 	border-color: var(--blue);
 }
 
-.secondaryBtn .icon {
+.h-secondaryBtn .icon {
 	color: var(--blue);
 }
 
-.dashedBtn {
+.h-dashedBtn {
 	color: var(--blue);
 	background-color: var(--secondaryBackground);
 	border-style: dashed;
 	border-color: var(--heartland-gray);
 }
 
-.dashedBtn:hover {
+.h-dashedBtn:hover {
 	color: var(--blue);
 	background-color: var(--secondaryBackground);
 	border-style: dashed;
 	border-color: var(--blue);
 }
 
-.dashedBtn .icon {
+.h-dashedBtn .icon {
 	color: var(--blue);
 }
 
-.cancelBtn {
+.h-cancelBtn {
 	color: var(--heartland-gray);
 	border: none;
 	background-color: transparent;
 	border-color: transparent;
 }
 
-.warningBtn {
+.h-warningBtn {
 	color: var(--text);
 	border: none;
 	background-color: var(--red);
 	border: 2px solid var(--red);
 }
 
-.warningBtn:hover {
+.h-warningBtn:hover {
 	color: var(--text);
 	border: none;
 	background-color: var(--darkRed);

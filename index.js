@@ -1,13 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Loader from "react-loader-spinner";
-import "heartland-react/src/button.css";
-
-const createSelector = name => {
-  return name.replace(/[^a-zA-Z0-9\s]+/g, "").trim().replace(/\s+/g, "-").toLowerCase();
-};
-
-Button.propTypes = {
+import "heartland-react/src/heartlandButton.css";
+HeartlandButton.propTypes = {
   onClick: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
@@ -17,36 +12,40 @@ Button.propTypes = {
   style: PropTypes.object
 };
 
-function Button(props) {
-  let style = "btn ";
+function HeartlandButton(props) {
+  const createSelector = name => {
+    return name.replace(/[^a-zA-Z0-9\s]+/g, "").trim().replace(/\s+/g, "-").toLowerCase();
+  };
+
+  let style = "h-btn ";
 
   if (!props.text) {
-    style = "btnIconOnly ";
+    style = "h-btnIconOnly ";
   }
 
   switch (props.type) {
     case "cancel":
-      style += "cancelBtn";
+      style += "h-cancelBtn";
       break;
 
     case "primary":
-      style += "primaryBtn";
+      style += "h-primaryBtn";
       break;
 
     case "secondary":
-      style += "secondaryBtn";
+      style += "h-secondaryBtn";
       break;
 
     case "dashed":
-      style += "dashedBtn";
+      style += "h-dashedBtn";
       break;
 
     case "warning":
-      style += "warningBtn";
+      style += "h-warningBtn";
       break;
 
     default:
-      style += "primaryBtn";
+      style += "h-primaryBtn";
   }
 
   return /*#__PURE__*/React.createElement("button", {
@@ -63,11 +62,11 @@ function Button(props) {
     width: 20,
     radius: 16,
     color: "#fff",
-    className: "iconLoading"
+    className: "h-iconLoading"
   }), !props.loading && /*#__PURE__*/React.createElement("span", null, props.text));
 }
 
-export default Button;
+export default HeartlandButton;
 export const createSelector = name => {
   return name.replace(/[^a-zA-Z0-9\s]+/g, "").trim().replace(/\s+/g, "-").toLowerCase();
 };
