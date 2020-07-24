@@ -19,7 +19,7 @@
 	outline: 1px solid var(--inputFocus);
 }
 
-.h-textBox .textInput:focus {
+.h-textBox .h-textInput:focus {
 	outline-width: 0;
 }
 
