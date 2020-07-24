@@ -1,6 +1,6 @@
 {
 	"name": "heartland-react",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"private": false,
 	"babel": {
 		"presets": [
@@ -8,12 +8,14 @@
 		]
 	},
 	"dependencies": {
+		"@fortawesome/fontawesome-svg-core": "^1.2.30",
+		"@fortawesome/react-fontawesome": "^0.1.11",
 		"@testing-library/jest-dom": "^4.2.4",
-		"@testing-library/react": "^9.5.0",
 		"@testing-library/user-event": "^7.2.1",
 		"prop-types": "^15.7.2",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
+		"react-input-mask": "^2.0.4",
 		"react-loader-spinner": "^3.1.14",
 		"react-scripts": "3.4.1"
 	},
@@ -43,7 +45,7 @@
 	"devDependencies": {
 		"@babel/cli": "^7.10.5",
 		"@babel/preset-react": "^7.10.4",
-		"babel-plugin-transform-postcss": "^0.3.0",
+		"@testing-library/react": "^9.5.0",
 		"postcss": "^7.0.32",
 		"postcss-modules": "^3.2.0"
 	}

@@ -1,0 +1,63 @@
+.h-textBox {
+	background-color: var(--white);
+	width: 100%;
+	height: var(--controlHeight);
+	box-sizing: border-box;
+	font-size: 14px;
+	color: var(--inputText);
+	border: 1px solid var(--borderInput);
+	box-shadow: 1px 2px 3px var(--inputShadow);
+	display: flex;
+}
+
+.h-textBox .h-textInput {
+	border: none;
+	margin: 1px;
+}
+
+.h-textBox:focus-within {
+	outline: 1px solid var(--inputFocus);
+}
+
+.h-textBox .textInput:focus {
+	outline-width: 0;
+}
+
+.h-textInput {
+	padding-left: 20px;
+	box-sizing: border-box;
+	display: block;
+	width: 100%;
+	font-size: 14px;
+	color: var(--inputText);
+	background-color: var(--white);
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+.h-textBox.invalid {
+	border-color: var(--red);
+}
+
+.h-textBox.invalid:hover {
+	border-color: var(--red);
+}
+
+.h-textInput::placeholder {
+	color: var(--iconGray);
+}
+
+.h-textBox:hover {
+	border: 1px solid var(--inputHover);
+}
+
+.h-textInput:focus::placeholder {
+	color: transparent;
+}
+
+.h-textIconRight {
+	align-self: center;
+	color: var(--iconLightGray);
+	background-color: transparent;
+	padding-right: 19px;
+}

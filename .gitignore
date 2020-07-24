@@ -7,11 +7,13 @@
 
 # testing
 /coverage
+/src/__tests__
 
 # production
 /build
 
 # misc
+azure-pipielines.yml
 .DS_Store
 .env.local
 .env.development.local
