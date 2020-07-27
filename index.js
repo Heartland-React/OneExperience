@@ -223,7 +223,7 @@ export function Input({
 			},
 			/*#__PURE__*/ React.createElement(InputMask, {
 				id: label,
-				name: id,
+				name: "h-" + label,
 				disabled: disabled,
 				mask: mask,
 				maskChar: maskChar,

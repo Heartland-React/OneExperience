@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Loader from "react-loader-spinner";
-import FontAwesomeIcon from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "heartland-react/src/button.css";
 
