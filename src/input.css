@@ -10,6 +10,28 @@
 	display: flex;
 }
 
+.h-inputLabel {
+	display: block;
+	font-size: 12px;
+	font-weight: bold;
+	margin-bottom: 2px;
+	color: var(--inputLabel);
+	text-transform: uppercase;
+}
+.h-inputLabel:hover {
+	cursor: pointer;
+}
+
+.h-maxInput {
+	margin-top: 18px;
+	width: 100%;
+}
+
+.h-mediumInput {
+	margin-top: 18px;
+	width: 48%;
+}
+
 .h-textBox .h-textInput {
 	border: none;
 	margin: 1px;
