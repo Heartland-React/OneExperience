@@ -1,8 +1,4 @@
-import React from "react";
-import PropTypes from "prop-types";
 import InputMask from "react-input-mask";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import "heartland-react/src/input.css";
 
 Input.propTypes = {
@@ -109,7 +105,7 @@ export function Input({
 			<div className={textBoxClass} style={style}>
 				<InputMask
 					id={label}
-					name={id}
+					name={"h-" + label}
 					disabled={disabled}
 					mask={mask}
 					maskChar={maskChar}
