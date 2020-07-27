@@ -1,20 +1,33 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Loader from "react-loader-spinner";
+import FontAwesomeIcon from "@fortawesome/react-fontawesome";
 
-import "heartland-react/src/heartlandButton.css";
+import "heartland-react/src/button.css";
 
-HeartlandButton.propTypes = {
+Button.propTypes = {
 	onClick: PropTypes.func.isRequired,
 	text: PropTypes.string.isRequired,
 	type: PropTypes.string.isRequired,
 	disabled: PropTypes.bool,
+	iconLeft: PropTypes.object,
+	iconRight: PropTypes.object,
 	loading: PropTypes.bool,
 	selector: PropTypes.string,
 	style: PropTypes.object,
 };
 
-function HeartlandButton(props) {
+export function Button({
+	onClick,
+	text,
+	type,
+	disabled,
+	iconLeft,
+	iconRight,
+	loading,
+	selector,
+	style,
+}) {
 	const createSelector = (name) => {
 		return name
 			.replace(/[^a-zA-Z0-9\s]+/g, "")
@@ -23,45 +36,43 @@ function HeartlandButton(props) {
 			.toLowerCase();
 	};
 
-	let style = "h-btn ";
+	let cName = "h-btn ";
 
-	if (!props.text) {
-		style = "h-btnIconOnly ";
+	if (!text) {
+		cName = "h-btnIconOnly ";
 	}
 
-	switch (props.type) {
+	switch (type) {
 		case "cancel":
-			style += "h-cancelBtn";
+			cName += "h-cancelBtn";
 			break;
 		case "primary":
-			style += "h-primaryBtn";
+			cName += "h-primaryBtn";
 			break;
 		case "secondary":
-			style += "h-secondaryBtn";
+			cName += "h-secondaryBtn";
 			break;
 		case "dashed":
-			style += "h-dashedBtn";
+			cName += "h-dashedBtn";
 			break;
 		case "warning":
-			style += "h-warningBtn";
+			cName += "h-warningBtn";
 			break;
 		default:
-			style += "h-primaryBtn";
+			cName += "h-primaryBtn";
 	}
 
 	return (
 		<button
-			className={style}
-			style={props.style}
-			disabled={props.disabled}
-			data-test={`button ${createSelector(
-				props.selector ? props.selector : props.text
-			)}`}
+			className={cName}
+			style={style}
+			disabled={disabled}
+			data-test={`button ${createSelector(selector ? selector : text)}`}
 			onClick={() => {
-				if (!props.loading) props.onClick();
+				if (!loading) onClick();
 			}}
 		>
-			{props.loading && (
+			{loading && (
 				<Loader
 					type='Oval'
 					height={20}
@@ -71,9 +82,21 @@ function HeartlandButton(props) {
 					className='h-iconLoading'
 				/>
 			)}
-			{!props.loading && <span>{props.text}</span>}
+			{iconLeft && !loading && (
+				<FontAwesomeIcon
+					className='h-icon h-iconLeft'
+					size='lg'
+					icon={iconLeft}
+				/>
+			)}
+			{!loading && <span>{text}</span>}
+			{iconRight && !loading && (
+				<FontAwesomeIcon
+					className='h-icon h-iconRight'
+					size='lg'
+					icon={iconRight}
+				/>
+			)}
 		</button>
 	);
 }
-
-export default HeartlandButton;

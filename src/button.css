@@ -30,6 +30,14 @@
 	outline: none;
 }
 
+.h-btn .h-iconRight {
+	padding-left: 15px;
+}
+
+.h-btn .h-iconLeft {
+	padding-right: 15px;
+}
+
 .h-iconLoading {
 	position: relative;
 	top: 4px;
@@ -47,7 +55,7 @@
 	border-color: var(--navyBlue);
 }
 
-.h-primaryBtn .icon {
+.h-primaryBtn .h-icon {
 	color: var(--text);
 }
 
@@ -62,7 +70,7 @@
 	border-color: var(--blue);
 }
 
-.h-secondaryBtn .icon {
+.h-secondaryBtn .h-icon {
 	color: var(--blue);
 }
 
@@ -80,7 +88,7 @@
 	border-color: var(--blue);
 }
 
-.h-dashedBtn .icon {
+.h-dashedBtn .h-icon {
 	color: var(--blue);
 }
 
