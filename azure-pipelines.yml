@@ -4,13 +4,25 @@ trigger:
   - master
 
 pool:
-  vmImage: "ubuntu-latest"
+  vmImage: 'ubuntu-latest'
 
 variables:
-  versionNumberPrefix: 0.1.0
-  fullVersionNumber: "$(versionNumberPrefix).$(Build.BuildId)"
+  nodeVersion: '10.x'
+  versionNumberPrefix: '1.1' #npm uses 3 digit build numbers
+  fullVersionNumber: '$(versionNumberPrefix).$(Build.BuildId)'
 
 steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: $(nodeVersion)
+    displayName: Install Node.js
+
+  - task: PowerShell@2
+    inputs:
+      targetType: 'inline'
+      script: "(Get-Content './package.json').replace('[VERSION_NUMBER]', '$(fullVersionNumber)') | Set-Content './package.json'"
+    displayName: Replace Version Number Token
+
   - task: Npm@1
     inputs:
       command: publish
