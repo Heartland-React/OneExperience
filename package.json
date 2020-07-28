@@ -1,6 +1,6 @@
 {
 	"name": "heartland-react",
-	"version": "1.1.4",
+	"version": "[VERSION_NUMBER]",
 	"private": false,
 	"babel": {
 		"presets": [
