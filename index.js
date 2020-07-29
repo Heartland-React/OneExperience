@@ -18,8 +18,6 @@ const StyledButton = styled.button`
 	margin: 2px;
 	border: 2px solid var(--Hgray8);
 	outline: none;
-	padding-left: ${props => props.iconRight ? "15px" : "0px"};
-	padding-right: ${props => props.iconLeft ? "15px" : "0px"};
 	${props => props.type}
 `;
 const StyledLoader = styled(Loader)`
@@ -36,6 +34,7 @@ const Label = styled.label`
 	text-transform: uppercase;
 `;
 const Container = styled.div`
+	margin-top: 18px;
 	width: ${props => props.size === "medium" ? "48%" : "100%"};
 
 	@media screen and (max-width: 992px) {
@@ -86,6 +85,10 @@ const TextBox = styled.div`
 	&:focus-within {
 		outline: 1px solid var(--Hgray7);
 	}
+`;
+const StyledFontAwesomeButtonIcon = styled(FontAwesomeIcon)`
+	padding-left: ${props => props.position === "right" ? "15px" : "0px"};
+	padding-right: ${props => props.position === "left" ? "15px" : "0px"};
 `;
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
 	align-self: center;
@@ -191,11 +194,13 @@ export const Heartland = {
       width: 20,
       radius: 16,
       color: "#fff"
-    }), iconLeft && !loading && /*#__PURE__*/React.createElement(FontAwesomeIcon, {
+    }), iconLeft && !loading && /*#__PURE__*/React.createElement(StyledFontAwesomeButtonIcon, {
       size: "lg",
+      position: "left",
       icon: iconLeft
-    }), !loading && /*#__PURE__*/React.createElement("span", null, text), iconRight && !loading && /*#__PURE__*/React.createElement(FontAwesomeIcon, {
+    }), !loading && /*#__PURE__*/React.createElement("span", null, text), iconRight && !loading && /*#__PURE__*/React.createElement(StyledFontAwesomeButtonIcon, {
       size: "lg",
+      position: "right",
       icon: iconRight
     }));
   },

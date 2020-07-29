@@ -19,8 +19,6 @@ const StyledButton = styled.button`
 	margin: 2px;
 	border: 2px solid var(--Hgray8);
 	outline: none;
-	padding-left: ${(props) => (props.iconRight ? "15px" : "0px")};
-	padding-right: ${(props) => (props.iconLeft ? "15px" : "0px")};
 	${(props) => props.type}
 `;
 
@@ -40,6 +38,7 @@ const Label = styled.label`
 `;
 
 const Container = styled.div`
+	margin-top: 18px;
 	width: ${(props) => (props.size === "medium" ? "48%" : "100%")};
 
 	@media screen and (max-width: 992px) {
@@ -92,6 +91,11 @@ const TextBox = styled.div`
 	&:focus-within {
 		outline: 1px solid var(--Hgray7);
 	}
+`;
+
+const StyledFontAwesomeButtonIcon = styled(FontAwesomeIcon)`
+	padding-left: ${(props) => (props.position === "right" ? "15px" : "0px")};
+	padding-right: ${(props) => (props.position === "left" ? "15px" : "0px")};
 `;
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
@@ -203,10 +207,20 @@ export const Heartland = {
 						color='#fff'
 					/>
 				)}
-				{iconLeft && !loading && <FontAwesomeIcon size='lg' icon={iconLeft} />}
+				{iconLeft && !loading && (
+					<StyledFontAwesomeButtonIcon
+						size='lg'
+						position='left'
+						icon={iconLeft}
+					/>
+				)}
 				{!loading && <span>{text}</span>}
 				{iconRight && !loading && (
-					<FontAwesomeIcon size='lg' icon={iconRight} />
+					<StyledFontAwesomeButtonIcon
+						size='lg'
+						position='right'
+						icon={iconRight}
+					/>
 				)}
 			</StyledButton>
 		);
