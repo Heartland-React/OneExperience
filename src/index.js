@@ -138,34 +138,34 @@ export const Heartland = {
 			case "secondary":
 				typeStyle = `
 				color: var(--Hblue1);
-				background-color: var(--Hwhite1);
+				background-color: var(--Hwhite2);
 				&:hover {
 				color: var(--Hblue1);
-				background-color: var(--Hwhite1);
+				background-color: var(--Hwhite2);
 				border-color: var(--Hblue1);	
 				}`;
 				break;
 			case "dashed":
 				typeStyle = `
 				color: var(--Hblue1);
-				background-color: var(--Hwhite1);
+				background-color: var(--Hwhite2);
 				border-style: dashed;
 				border-color: var(--Hgray9);
 				&:hover {
 				color: var(--Hblue1);
-				background-color: var(--Hwhite1);
+				background-color: var(--Hwhite2);
 				border-style: dashed;
 				border-color: var(--Hblue1);	
 				}`;
 				break;
 			case "warning":
 				typeStyle = `
-				color: var(--Hwhite1);
+				color: var(--Hwhite2);
 				border: none;
 				background-color: var(--Hred1);
 				border: 2px solid var(--Hred1);
 				&:hover {
-				color: var(--Hwhite1);
+				color: var(--Hwhite2);
 				border: none;
 				background-color: var(--Hred2);
 				border: 2px solid var(--Hred2);
@@ -174,11 +174,11 @@ export const Heartland = {
 			case "primary":
 			default:
 				typeStyle = `
-				color: var(--Hwhite1);
+				color: var(--Hwhite2);
 				background-color: var(--Hblue1);
 				border-color: var(--Hblue1);
 				&:hover {
-				color: var(--Hwhite1);
+				color: var(--Hwhite2);
 				background-color: var(--Hnavy1);
 				border-color: var(--Hnavy1);
 				}`;
