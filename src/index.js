@@ -2,6 +2,7 @@ import React from "react";
 import InputMask from "react-input-mask";
 import PropTypes from "prop-types";
 import Loader from "react-loader-spinner";
+import Select from "react-select";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -71,7 +72,7 @@ const StyledInputMask = styled(InputMask)`
 	}
 `;
 
-const TextBox = styled.div`
+const TextBoxDiv = styled.div`
 	background-color: var(--Hwhite1);
 	width: 100%;
 	height: 43px;
@@ -111,6 +112,35 @@ const createSelector = (name) => {
 		.trim()
 		.replace(/\s+/g, "-")
 		.toLowerCase();
+};
+
+export const createSelectOptions = ({
+	data,
+	value,
+	label,
+	valueSort,
+	noSorting,
+}) => {
+	return data
+		.sort(function (a, b) {
+			if (noSorting) return 0;
+			if (valueSort) {
+				return a[value] > b[value] ? 1 : b[value] > a[value] ? -1 : 0;
+			} else {
+				return a[label] > b[label] ? 1 : b[label] > a[label] ? -1 : 0;
+			}
+		})
+		.map((x) => {
+			return { value: x[value], label: x[label] };
+		});
+};
+
+export const getSelectItem = ({ e, multiple, options, valueField }) => {
+	if (multiple && e != null)
+		return e.map((e) => {
+			return options.find((x) => x[valueField] === e.value);
+		});
+	else if (!multiple) return options.find((x) => x[valueField] === e.value);
 };
 
 export const Heartland = {
@@ -225,7 +255,7 @@ export const Heartland = {
 			</StyledButton>
 		);
 	},
-	Input: function Input({
+	TextBox: function TextBox({
 		label,
 		onChange,
 		size,
@@ -265,7 +295,7 @@ export const Heartland = {
 		return (
 			<Container size={size}>
 				<Label htmlFor={label}>{label}</Label>
-				<TextBox style={style} valid={valid}>
+				<TextBoxDiv style={style} valid={valid}>
 					<StyledInputMask
 						id={label}
 						name={"h-" + label}
@@ -280,7 +310,113 @@ export const Heartland = {
 						data-test={selectorData}
 					/>
 					{iconRight && <StyledFontAwesomeIcon size='lg' icon={iconRight} />}
-				</TextBox>
+				</TextBoxDiv>
+			</Container>
+		);
+	},
+	DropDown: function DropDown(props) {
+		const customStyles = {
+			option: (provided, state) => ({
+				...provided,
+				color: "var(--Hgray2)",
+				textAlign: "left",
+				backgroundColor: state.isSelected ? "var(--Hgray11)" : "var(--Hwhite1)",
+				"&:hover": {
+					backgroundColor: !state.isSelected && "var(--Hgray12)",
+				},
+			}),
+			menu: (provided) => ({
+				...provided,
+				top: "36px",
+				zIndex: "20",
+				borderRadius: "0px",
+				backgroundColor: "var(--Hwhite1)",
+			}),
+			container: (provided) => ({
+				...provided,
+				width: "100%",
+			}),
+			control: (provided) => ({
+				...provided,
+				height: "43px",
+				boxShadow: "1px 2px 3px var(--Hgray3)",
+				border: props.valid
+					? "1px solid var(--Hgray4)"
+					: "1px solid var(--Hred1)",
+				backgroundColor: "var(--Hwhite1)",
+				fontSize: "14px",
+				color: "var(--Hgray2)",
+				borderRadius: "0px",
+			}),
+			singleValue: (provided) => ({
+				...provided,
+				color: "var(--Hgray2)",
+			}),
+			placeholder: (provided) => ({
+				...provided,
+				color: "var(--Hgray5)",
+				fontSize: "14px",
+				fontFamily: "Roboto",
+			}),
+			noOptionsMessage: (provided) => ({
+				...provided,
+				backgroundColor: "var(--Hwhite2)",
+				borderRadius: "0px",
+				fontFamily: "Roboto",
+			}),
+			multiValueRemove: (provided) => ({
+				...provided,
+				color: "var(--Hgray13)",
+			}),
+		};
+
+		return (
+			<Container size={props.size}>
+				<Label htmlFor={props.label}>{props.label}</Label>
+				<Select
+					styles={customStyles}
+					isLoading={props.loading}
+					isDisabled={props.disabled}
+					id={props.label}
+					isMulti={props.multiple}
+					placeholder={props.placeholder}
+					theme={(theme) => ({
+						...theme,
+						colors: {
+							...theme.colors,
+							primary: "var(--Hgray4)",
+							primary50: "var(--Hgray13)",
+							dangerLight: "var(--Hblue1)",
+							danger: "var(--Hnavy1)",
+						},
+					})}
+					options={createSelectOptions({
+						data: props.options,
+						value: props.valueField,
+						label: props.labelField,
+						valueSort: props.orderByValue,
+						noSorting: props.noOrder,
+					})}
+					onChange={(e) => {
+						props.onChange(
+							getSelectItem({
+								e: e,
+								multiple: props.multiple,
+								options: props.options,
+								valueField: props.valueField,
+							})
+						);
+					}}
+					value={
+						props.value
+							? createSelectOptions({
+									data: props.multiple ? props.value : [props.value],
+									value: props.valueField,
+									label: props.labelField,
+							  })
+							: props.placeholder
+					}
+				/>
 			</Container>
 		);
 	},
@@ -298,7 +434,7 @@ Heartland.Button.propTypes = {
 	style: PropTypes.object,
 };
 
-Heartland.Input.propTypes = {
+Heartland.TextBox.propTypes = {
 	label: PropTypes.string.isRequired,
 	onChange: PropTypes.func.isRequired,
 	size: PropTypes.string.isRequired,
@@ -314,9 +450,31 @@ Heartland.Input.propTypes = {
 	style: PropTypes.object,
 };
 
-Heartland.Input.defaultProps = {
+Heartland.TextBox.defaultProps = {
 	mask: "",
 	maskChar: " ",
 	alwaysShowMask: true,
 	valid: true,
+};
+
+Heartland.DropDown.propTypes = {
+	label: PropTypes.string.isRequired,
+	labelField: PropTypes.string.isRequired,
+	onChange: PropTypes.func.isRequired,
+	options: PropTypes.array.isRequired,
+	valueField: PropTypes.string.isRequired,
+	disabled: PropTypes.bool,
+	loading: PropTypes.bool,
+	multiple: PropTypes.bool,
+	noOrder: PropTypes.bool,
+	orderByValue: PropTypes.bool,
+	placeholder: PropTypes.string,
+	size: PropTypes.string,
+	valid: PropTypes.bool,
+	value: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+};
+
+Heartland.DropDown.defaultProps = {
+	valid: true,
+	size: "medium",
 };

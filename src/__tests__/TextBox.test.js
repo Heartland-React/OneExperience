@@ -8,7 +8,7 @@ describe("TextInput component", () => {
 		const handleChange = jest.fn();
 		beforeEach(() => {
 			render(
-				<Heartland.Input
+				<Heartland.TextBox
 					value='Apple'
 					size='max'
 					label='Fruit'
@@ -33,7 +33,7 @@ describe("TextInput component", () => {
 		let emptyPhone = "(   )    -    ";
 
 		const { getByLabelText } = render(
-			<Heartland.Input
+			<Heartland.TextBox
 				value='abc'
 				size='max'
 				label='Phone Number'
@@ -47,7 +47,7 @@ describe("TextInput component", () => {
 
 	it("limits to 5 numbers in zip code mask", () => {
 		const { getByLabelText } = render(
-			<Heartland.Input
+			<Heartland.TextBox
 				value='222227'
 				size='max'
 				label='Zip Code'
@@ -61,7 +61,7 @@ describe("TextInput component", () => {
 
 	it("displays placeholder text when provided", () => {
 		const { getByLabelText } = render(
-			<Heartland.Input
+			<Heartland.TextBox
 				value=''
 				size='max'
 				label='Fruit'
@@ -75,7 +75,7 @@ describe("TextInput component", () => {
 
 	it("displays empty masks with provided maskChar", () => {
 		const { getByLabelText } = render(
-			<Heartland.Input
+			<Heartland.TextBox
 				value=''
 				size='ssn'
 				label='SSN'

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Heartland = void 0;
+exports.Heartland = exports.getSelectItem = exports.createSelectOptions = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -13,11 +13,19 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _reactLoaderSpinner = _interopRequireDefault(require("react-loader-spinner"));
 
+var _reactSelect = _interopRequireDefault(require("react-select"));
+
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 var _reactFontawesome = require("@fortawesome/react-fontawesome");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _templateObject8() {
   var data = _taggedTemplateLiteral(["\n\talign-self: center;\n\tcolor: var(--Hgray10);\n\tbackground-color: transparent;\n\tpadding-right: 19px;\n"]);
@@ -115,7 +123,7 @@ var Container = _styledComponents.default.div(_templateObject4(), function (prop
 
 var StyledInputMask = (0, _styledComponents.default)(_reactInputMask.default)(_templateObject5());
 
-var TextBox = _styledComponents.default.div(_templateObject6(), function (props) {
+var TextBoxDiv = _styledComponents.default.div(_templateObject6(), function (props) {
   return props.valid ? "var(--Hgray4)" : "var(--Hred1)";
 });
 
@@ -130,17 +138,56 @@ var createSelector = function createSelector(name) {
   return name.replace(/[^a-zA-Z0-9\s]+/g, "").trim().replace(/\s+/g, "-").toLowerCase();
 };
 
+var createSelectOptions = function createSelectOptions(_ref) {
+  var data = _ref.data,
+      value = _ref.value,
+      label = _ref.label,
+      valueSort = _ref.valueSort,
+      noSorting = _ref.noSorting;
+  return data.sort(function (a, b) {
+    if (noSorting) return 0;
+
+    if (valueSort) {
+      return a[value] > b[value] ? 1 : b[value] > a[value] ? -1 : 0;
+    } else {
+      return a[label] > b[label] ? 1 : b[label] > a[label] ? -1 : 0;
+    }
+  }).map(function (x) {
+    return {
+      value: x[value],
+      label: x[label]
+    };
+  });
+};
+
+exports.createSelectOptions = createSelectOptions;
+
+var getSelectItem = function getSelectItem(_ref2) {
+  var e = _ref2.e,
+      multiple = _ref2.multiple,
+      options = _ref2.options,
+      valueField = _ref2.valueField;
+  if (multiple && e != null) return e.map(function (e) {
+    return options.find(function (x) {
+      return x[valueField] === e.value;
+    });
+  });else if (!multiple) return options.find(function (x) {
+    return x[valueField] === e.value;
+  });
+};
+
+exports.getSelectItem = getSelectItem;
 var Heartland = {
-  Button: function Button(_ref) {
-    var _onClick = _ref.onClick,
-        text = _ref.text,
-        type = _ref.type,
-        disabled = _ref.disabled,
-        iconLeft = _ref.iconLeft,
-        iconRight = _ref.iconRight,
-        loading = _ref.loading,
-        selector = _ref.selector,
-        style = _ref.style;
+  Button: function Button(_ref3) {
+    var _onClick = _ref3.onClick,
+        text = _ref3.text,
+        type = _ref3.type,
+        disabled = _ref3.disabled,
+        iconLeft = _ref3.iconLeft,
+        iconRight = _ref3.iconRight,
+        loading = _ref3.loading,
+        selector = _ref3.selector,
+        style = _ref3.style;
     var typeStyle = "";
 
     switch (type) {
@@ -193,20 +240,20 @@ var Heartland = {
       icon: iconRight
     }));
   },
-  Input: function Input(_ref2) {
-    var label = _ref2.label,
-        onChange = _ref2.onChange,
-        size = _ref2.size,
-        value = _ref2.value,
-        alwaysShowMask = _ref2.alwaysShowMask,
-        disabled = _ref2.disabled,
-        iconRight = _ref2.iconRight,
-        maskChar = _ref2.maskChar,
-        maskType = _ref2.maskType,
-        placeholder = _ref2.placeholder,
-        selector = _ref2.selector,
-        valid = _ref2.valid,
-        style = _ref2.style;
+  TextBox: function TextBox(_ref4) {
+    var label = _ref4.label,
+        onChange = _ref4.onChange,
+        size = _ref4.size,
+        value = _ref4.value,
+        alwaysShowMask = _ref4.alwaysShowMask,
+        disabled = _ref4.disabled,
+        iconRight = _ref4.iconRight,
+        maskChar = _ref4.maskChar,
+        maskType = _ref4.maskType,
+        placeholder = _ref4.placeholder,
+        selector = _ref4.selector,
+        valid = _ref4.valid,
+        style = _ref4.style;
 
     var createMask = function createMask(maskType) {
       var mask = "";
@@ -237,7 +284,7 @@ var Heartland = {
       size: size
     }, /*#__PURE__*/_react.default.createElement(Label, {
       htmlFor: label
-    }, label), /*#__PURE__*/_react.default.createElement(TextBox, {
+    }, label), /*#__PURE__*/_react.default.createElement(TextBoxDiv, {
       style: style,
       valid: valid
     }, /*#__PURE__*/_react.default.createElement(StyledInputMask, {
@@ -256,6 +303,110 @@ var Heartland = {
       size: "lg",
       icon: iconRight
     })));
+  },
+  DropDown: function DropDown(props) {
+    var customStyles = {
+      option: function option(provided, state) {
+        return _objectSpread(_objectSpread({}, provided), {}, {
+          color: "var(--Hgray2)",
+          textAlign: "left",
+          backgroundColor: state.isSelected ? "var(--Hgray11)" : "var(--Hwhite1)",
+          "&:hover": {
+            backgroundColor: !state.isSelected && "var(--Hgray12)"
+          }
+        });
+      },
+      menu: function menu(provided) {
+        return _objectSpread(_objectSpread({}, provided), {}, {
+          top: "36px",
+          zIndex: "20",
+          borderRadius: "0px",
+          backgroundColor: "var(--Hwhite1)"
+        });
+      },
+      container: function container(provided) {
+        return _objectSpread(_objectSpread({}, provided), {}, {
+          width: "100%"
+        });
+      },
+      control: function control(provided) {
+        return _objectSpread(_objectSpread({}, provided), {}, {
+          height: "43px",
+          boxShadow: "1px 2px 3px var(--Hgray3)",
+          border: props.valid ? "1px solid var(--Hgray4)" : "1px solid var(--Hred1)",
+          backgroundColor: "var(--Hwhite1)",
+          fontSize: "14px",
+          color: "var(--Hgray2)",
+          borderRadius: "0px"
+        });
+      },
+      singleValue: function singleValue(provided) {
+        return _objectSpread(_objectSpread({}, provided), {}, {
+          color: "var(--Hgray2)"
+        });
+      },
+      placeholder: function placeholder(provided) {
+        return _objectSpread(_objectSpread({}, provided), {}, {
+          color: "var(--Hgray5)",
+          fontSize: "14px",
+          fontFamily: "Roboto"
+        });
+      },
+      noOptionsMessage: function noOptionsMessage(provided) {
+        return _objectSpread(_objectSpread({}, provided), {}, {
+          backgroundColor: "var(--Hwhite2)",
+          borderRadius: "0px",
+          fontFamily: "Roboto"
+        });
+      },
+      multiValueRemove: function multiValueRemove(provided) {
+        return _objectSpread(_objectSpread({}, provided), {}, {
+          color: "var(--Hgray13)"
+        });
+      }
+    };
+    return /*#__PURE__*/_react.default.createElement(Container, {
+      size: props.size
+    }, /*#__PURE__*/_react.default.createElement(Label, {
+      htmlFor: props.label
+    }, props.label), /*#__PURE__*/_react.default.createElement(_reactSelect.default, {
+      styles: customStyles,
+      isLoading: props.loading,
+      isDisabled: props.disabled,
+      id: props.label,
+      isMulti: props.multiple,
+      placeholder: props.placeholder,
+      theme: function theme(_theme) {
+        return _objectSpread(_objectSpread({}, _theme), {}, {
+          colors: _objectSpread(_objectSpread({}, _theme.colors), {}, {
+            primary: "var(--Hgray4)",
+            primary50: "var(--Hgray13)",
+            dangerLight: "var(--Hblue1)",
+            danger: "var(--Hnavy1)"
+          })
+        });
+      },
+      options: createSelectOptions({
+        data: props.options,
+        value: props.valueField,
+        label: props.labelField,
+        valueSort: props.orderByValue,
+        noSorting: props.noOrder
+      }),
+      onChange: function onChange(e) {
+        props.onChange(getSelectItem({
+          e: e,
+          multiple: props.multiple,
+          options: props.options,
+          valueField: props.valueField
+        }));
+      },
+      value: props.value ? createSelectOptions({
+        data: props.multiple ? props.value : [props.value],
+        value: props.valueField,
+        label: props.labelField
+      }) : props.placeholder
+    }));
   }
 };
 exports.Heartland = Heartland;
@@ -270,7 +421,7 @@ Heartland.Button.propTypes = {
   selector: _propTypes.default.string,
   style: _propTypes.default.object
 };
-Heartland.Input.propTypes = {
+Heartland.TextBox.propTypes = {
   label: _propTypes.default.string.isRequired,
   onChange: _propTypes.default.func.isRequired,
   size: _propTypes.default.string.isRequired,
@@ -285,9 +436,29 @@ Heartland.Input.propTypes = {
   valid: _propTypes.default.bool,
   style: _propTypes.default.object
 };
-Heartland.Input.defaultProps = {
+Heartland.TextBox.defaultProps = {
   mask: "",
   maskChar: " ",
   alwaysShowMask: true,
   valid: true
+};
+Heartland.DropDown.propTypes = {
+  label: _propTypes.default.string.isRequired,
+  labelField: _propTypes.default.string.isRequired,
+  onChange: _propTypes.default.func.isRequired,
+  options: _propTypes.default.array.isRequired,
+  valueField: _propTypes.default.string.isRequired,
+  disabled: _propTypes.default.bool,
+  loading: _propTypes.default.bool,
+  multiple: _propTypes.default.bool,
+  noOrder: _propTypes.default.bool,
+  orderByValue: _propTypes.default.bool,
+  placeholder: _propTypes.default.string,
+  size: _propTypes.default.string,
+  valid: _propTypes.default.bool,
+  value: _propTypes.default.oneOfType([_propTypes.default.object, _propTypes.default.array])
+};
+Heartland.DropDown.defaultProps = {
+  valid: true,
+  size: "medium"
 };
