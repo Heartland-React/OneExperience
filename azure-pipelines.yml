@@ -4,12 +4,12 @@ trigger:
   - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: "ubuntu-latest"
 
 variables:
-  nodeVersion: '10.x'
-  versionNumberPrefix: '1.1' #npm uses 3 digit build numbers
-  fullVersionNumber: '$(versionNumberPrefix).$(Build.BuildId)'
+  nodeVersion: "10.x"
+  versionNumberPrefix: "1.1" #npm uses 3 digit build numbers
+  fullVersionNumber: "$(versionNumberPrefix).$(Build.BuildId)"
 
 steps:
   - task: NodeTool@0
@@ -19,8 +19,8 @@ steps:
 
   - task: PowerShell@2
     inputs:
-      targetType: 'inline'
-      script: "(Get-Content './package.json').replace('[VERSION_NUMBER]', '$(fullVersionNumber)') | Set-Content './package.json'"
+      targetType: "inline"
+      script: "(Get-Content './package.json').replace('9.9.9', '$(fullVersionNumber)') | Set-Content './package.json'"
     displayName: Replace Version Number Token
 
   - task: Npm@1
