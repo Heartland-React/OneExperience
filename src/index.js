@@ -33,13 +33,13 @@ const Label = styled.label`
 	font-size: 12px;
 	text-align: left;
 	font-weight: bold;
-	margin-bottom: 2px;
+	margin-bottom: 0.2em;
 	color: var(--Hgray1);
 	text-transform: uppercase;
 `;
 
 const Container = styled.div`
-	margin-top: 18px;
+	margin-top: 1em;
 	width: ${(props) => (props.size === "medium" ? "48%" : "100%")};
 
 	@media screen and (max-width: 992px) {
@@ -75,7 +75,7 @@ const StyledInputMask = styled(InputMask)`
 const TextBoxDiv = styled.div`
 	background-color: var(--Hwhite1);
 	width: 100%;
-	height: 43px;
+	height: 3em;
 	outline: 0px;
 	box-sizing: border-box;
 	font-size: 14px;
@@ -327,7 +327,7 @@ export const Heartland = {
 			}),
 			menu: (provided) => ({
 				...provided,
-				top: "36px",
+				top: "2em",
 				zIndex: "20",
 				borderRadius: "0px",
 				backgroundColor: "var(--Hwhite1)",
@@ -338,7 +338,7 @@ export const Heartland = {
 			}),
 			control: (provided) => ({
 				...provided,
-				height: "43px",
+				height: "3em",
 				boxShadow: "1px 2px 3px var(--Hgray3)",
 				border: props.valid
 					? "1px solid var(--Hgray4)"

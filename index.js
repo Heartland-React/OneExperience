@@ -48,7 +48,7 @@ function _templateObject7() {
 }
 
 function _templateObject6() {
-  var data = _taggedTemplateLiteral(["\n\tbackground-color: var(--Hwhite1);\n\twidth: 100%;\n\theight: 43px;\n\toutline: 0px;\n\tbox-sizing: border-box;\n\tfont-size: 14px;\n\tcolor: var(--Hgray2);\n\tborder: 1px solid\n\t\t", ";\n\tbox-shadow: 1px 2px 3px var(--Hgray3);\n\tdisplay: flex;\n\n\t&:hover {\n\t\tborder: 1px solid var(--inputHover);\n\t}\n\n\t&:focus-within {\n\t\toutline: 1px solid var(--Hgray7);\n\t}\n"]);
+  var data = _taggedTemplateLiteral(["\n\tbackground-color: var(--Hwhite1);\n\twidth: 100%;\n\theight: 3em;\n\toutline: 0px;\n\tbox-sizing: border-box;\n\tfont-size: 14px;\n\tcolor: var(--Hgray2);\n\tborder: 1px solid\n\t\t", ";\n\tbox-shadow: 1px 2px 3px var(--Hgray3);\n\tdisplay: flex;\n\n\t&:hover {\n\t\tborder: 1px solid var(--inputHover);\n\t}\n\n\t&:focus-within {\n\t\toutline: 1px solid var(--Hgray7);\n\t}\n"]);
 
   _templateObject6 = function _templateObject6() {
     return data;
@@ -68,7 +68,7 @@ function _templateObject5() {
 }
 
 function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n\tmargin-top: 18px;\n\twidth: ", ";\n\n\t@media screen and (max-width: 992px) {\n\t\twidth: 100%;\n\t}\n"]);
+  var data = _taggedTemplateLiteral(["\n\tmargin-top: 1em;\n\twidth: ", ";\n\n\t@media screen and (max-width: 992px) {\n\t\twidth: 100%;\n\t}\n"]);
 
   _templateObject4 = function _templateObject4() {
     return data;
@@ -78,7 +78,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n\tdisplay: block;\n\tfont-size: 12px;\n\ttext-align: left;\n\tfont-weight: bold;\n\tmargin-bottom: 2px;\n\tcolor: var(--Hgray1);\n\ttext-transform: uppercase;\n"]);
+  var data = _taggedTemplateLiteral(["\n\tdisplay: block;\n\tfont-size: 12px;\n\ttext-align: left;\n\tfont-weight: bold;\n\tmargin-bottom: 0.2em;\n\tcolor: var(--Hgray1);\n\ttext-transform: uppercase;\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -318,7 +318,7 @@ var Heartland = {
       },
       menu: function menu(provided) {
         return _objectSpread(_objectSpread({}, provided), {}, {
-          top: "36px",
+          top: "2em",
           zIndex: "20",
           borderRadius: "0px",
           backgroundColor: "var(--Hwhite1)"
@@ -331,7 +331,7 @@ var Heartland = {
       },
       control: function control(provided) {
         return _objectSpread(_objectSpread({}, provided), {}, {
-          height: "43px",
+          height: "3em",
           boxShadow: "1px 2px 3px var(--Hgray3)",
           border: props.valid ? "1px solid var(--Hgray4)" : "1px solid var(--Hred1)",
           backgroundColor: "var(--Hwhite1)",
