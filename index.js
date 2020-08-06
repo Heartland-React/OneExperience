@@ -371,6 +371,7 @@ var Heartland = {
       htmlFor: props.label
     }, props.label), /*#__PURE__*/_react.default.createElement(_reactSelect.default, {
       styles: customStyles,
+      isSearchable: false,
       isLoading: props.loading,
       isDisabled: props.disabled,
       id: props.label,
