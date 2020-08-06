@@ -375,6 +375,7 @@ export const Heartland = {
 				<Label htmlFor={props.label}>{props.label}</Label>
 				<Select
 					styles={customStyles}
+					isSearchable={false}
 					isLoading={props.loading}
 					isDisabled={props.disabled}
 					id={props.label}
