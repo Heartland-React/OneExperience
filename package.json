@@ -1,7 +1,11 @@
 {
 	"name": "heartland-react",
-	"version": "9.9.9",
+	"version": "1.0.0",
 	"private": false,
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com"
+	},
+	"respository": "git://github.com/Heartland-React/OneExperience.git",
 	"babel": {
 		"presets": [
 			"@babel/preset-env"
@@ -16,21 +20,17 @@
 	"dependencies": {
 		"@fortawesome/fontawesome-svg-core": "^1.2.30",
 		"@fortawesome/react-fontawesome": "^0.1.11",
-		"prop-types": "^15.7.2",
-		"react": "^17.0.0-rc.0",
-		"react-dom": "^17.0.0-rc.0",
-		"react-input-mask": "^2.0.4",
-		"react-loader-spinner": "^3.1.14",
-		"react-scripts": "3.4.1",
-		"react-select": "^3.1.0"
+		"@material-ui/core": "^4.11.3",
+		"react": "^17.0.1",
+		"react-dom": "^17.0.1",
+		"react-scripts": "3.4.1"
 	},
 	"scripts": {
 		"publish:npm": "babel src --out-file index.js",
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
-		"eject": "react-scripts eject",
-		"refreshVSToken": "vsts-npm-auth -config .npmrc"
+		"eject": "react-scripts eject"
 	},
 	"eslintConfig": {
 		"extends": "react-app"
@@ -48,13 +48,12 @@
 		]
 	},
 	"devDependencies": {
-		"styled-components": "^5.1.1",
-		"@testing-library/jest-dom": "^4.2.4",
-		"@testing-library/user-event": "^7.2.1",
 		"@babel/cli": "^7.10.5",
 		"@babel/plugin-transform-react-jsx": "^7.10.4",
 		"@babel/preset-react": "^7.10.4",
+		"@testing-library/jest-dom": "^4.2.4",
 		"@testing-library/react": "^9.5.0",
+		"@testing-library/user-event": "^7.2.1",
 		"babel-preset-env": "^1.7.0"
 	}
 }
