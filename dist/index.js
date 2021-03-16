@@ -1,3 +1,5 @@
+Object.defineProperty(exports, '__esModule', { value: true });
+
 //import { withStyles, fade } from "@material-ui/core/styles";
 
 // import Checkbox from "@material-ui/core/Checkbox";
@@ -16,7 +18,7 @@ const colors = {
 	LightBlue: "#9CDCDB",
 };
 
-export const lightTheme = () => {
+const lightTheme = () => {
 	return {
 		palette: {
 			primary: {
@@ -83,7 +85,7 @@ export const lightTheme = () => {
 	};
 };
 
-export const HeartlandButton = withStyles((theme) => ({
+const HeartlandButton = withStyles((theme) => ({
 	root: {
 		fontSize: "1rem",
 		borderRadius: "100px",
@@ -111,13 +113,13 @@ export const HeartlandButton = withStyles((theme) => ({
 	},
 }))(Button);
 
-export const HeartlandCheckbox = withStyles((theme) => ({
+const HeartlandCheckbox = withStyles((theme) => ({
 	checked: {
 		color: `${theme.palette.primary.main}`,
 	},
 }))(Checkbox);
 
-export const HeartlandInput = withStyles((theme) => ({
+const HeartlandInput = withStyles((theme) => ({
 	root: {
 		"label + &": {
 			marginTop: theme.spacing(7),
@@ -163,7 +165,7 @@ export const HeartlandInput = withStyles((theme) => ({
 	},
 }))(InputBase);
 
-export const HeartlandLabel = withStyles((theme) => ({
+const HeartlandLabel = withStyles((theme) => ({
 	root: {
 		color: `${theme.palette.dark.black}`,
 		fontSize: "1.2rem",
@@ -177,3 +179,9 @@ export const HeartlandLabel = withStyles((theme) => ({
 		color: `${theme.palette.secondary.main}`,
 	},
 }))(InputLabel);
+
+exports.HeartlandButton = HeartlandButton;
+exports.HeartlandCheckbox = HeartlandCheckbox;
+exports.HeartlandInput = HeartlandInput;
+exports.HeartlandLabel = HeartlandLabel;
+exports.lightTheme = lightTheme;
